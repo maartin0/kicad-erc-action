@@ -1,0 +1,16 @@
+name: Run KiCad ERC
+description: Runs the KiCad ERC (electrical rules checker) on the provided .kicad_sch file
+
+branding:
+  icon: "check"
+  color: "yellow"
+
+inputs:
+  sch:
+    description: ".kicad_sch file to run ERC on"
+    required: true
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/maartin0/kicad-erc-action:v1"
+  args:
+    - ${{ inputs.sch }}
